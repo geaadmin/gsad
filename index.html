@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - gsad</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEA Standard Adaptability Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+  <div id="dashboard"></div>
+
+  <script>
+    var data = {
+      'Global Corporation': {
+        'Leadership and Ethical Governance': 70,
+        'Innovation-Driven Strategic Planning': 80,
+        'Digital Innovation and Process Efficiency': 75,
+        'Customer Focus and Value Creation': 70,
+        'Workforce Engagement and Safety': 65,
+        'Results-Driven Performance and Sustainability': 75,
+        'Regulatory Compliance and Governance': 70,
+        'Financial Performance and Management': 75
+      },
+      'Local Business': {
+        'Leadership and Ethical Governance': 60,
+        'Innovation-Driven Strategic Planning': 70,
+        'Digital Innovation and Process Efficiency': 65,
+        'Customer Focus and Value Creation': 60,
+        'Workforce Engagement and Safety': 70,
+        'Results-Driven Performance and Sustainability': 65,
+        'Regulatory Compliance and Governance': 60,
+        'Financial Performance and Management': 65
+      },
+      'Mergers and Acquisitions': {
+        'Leadership and Ethical Governance': 75,
+        'Innovation-Driven Strategic Planning': 65,
+        'Digital Innovation and Process Efficiency': 70,
+        'Customer Focus and Value Creation': 75,
+        'Workforce Engagement and Safety': 70,
+        'Results-Driven Performance and Sustainability': 70,
+        'Regulatory Compliance and Governance': 75,
+        'Financial Performance and Management': 70
+      },
+      'Liability Crisis': {
+        'Leadership and Ethical Governance': 70,
+        'Innovation-Driven Strategic Planning': 65,
+        'Digital Innovation and Process Efficiency': 60,
+        'Customer Focus and Value Creation': 70,
+        'Workforce Engagement and Safety': 75,
+        'Results-Driven Performance and Sustainability': 65,
+        'Regulatory Compliance and Governance': 70,
+        'Financial Performance and Management': 65
+      },
+      'Turnaround of Underperforming Organization': {
+        'Leadership and Ethical Governance': 65,
+        'Innovation-Driven Strategic Planning': 70,
+        'Digital Innovation and Process Efficiency': 60,
+        'Customer Focus and Value Creation': 65,
+        'Workforce Engagement and Safety': 70,
+        'Results-Driven Performance and Sustainability': 70,
+        'Regulatory Compliance and Governance': 65,
+        'Financial Performance and Management': 70
+      },
+      'Supply Chain Disruption': {
+        'Leadership and Ethical Governance': 60,
+        'Innovation-Driven Strategic Planning': 70,
+        'Digital Innovation and Process Efficiency': 75,
+        'Customer Focus and Value Creation': 60,
+        'Workforce Engagement and Safety': 65,
+        'Results-Driven Performance and Sustainability': 70,
+        'Regulatory Compliance and Governance': 60,
+        'Financial Performance and Management': 70
+      }
+    };
+
+    var categories = Object.keys(data);
+    var dimensions = Object.keys(data[categories[0]]);
+
+    var series = dimensions.map(dimension => ({
+      name: dimension,
+      data: categories.map(category => data[category][dimension])
+    }));
+
+    var options = {
+      chart: {
+        type: 'bar',
+        height: 500,
+        width: '100%'
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true
+        }
+      },
+      series: series,
+      xaxis: {
+        categories: categories
+      },
+      yaxis: {
+        title: {
+          text: 'Scenarios'
+        }
+      },
+      title: {
+        text: 'GEA Standard Adaptability Dashboard'
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector('#dashboard'), options);
+    chart.render();
+  </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
